@@ -5,10 +5,12 @@ const mongoose = require("mongoose");
 const taskRoutes = require("./routes/task");
 const userRoutes = require("./routes/user")
 
+const cors = require('cors')
 //Express APP
 const app = express();
 
 //Middleware
+app.use(cors({ origin: true, credentials: true, methods: 'GET,PUT,POST,OPTIONS', allowedHeaders: 'Content-Type,Authorization' }));
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(req.path, ": ", req.method);
